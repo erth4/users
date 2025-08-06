@@ -282,6 +282,13 @@
 
         function renderData(onlineIds) {
             globalOnlineIds = onlineIds;
+
+            const validOnlineUsers = onlineIds.filter(item => {
+                const isValidSerial = typeof item.serialkey === 'string' && item.serialkey.trim() !== '';
+                const isValidPayload = item.payload && typeof item.payload === 'object' && !Array.isArray(item.payload);
+                return isValidSerial && isValidPayload;
+            });
+
             const grouped = onlineIds.reduce((acc, item) => {
                 const isValidSerial = typeof item.serialkey === 'string' && item.serialkey.trim() !== '';
                 const isValidPayload = item.payload && typeof item.payload === 'object' && !Array.isArray(item.payload);
@@ -297,7 +304,7 @@
             }, {});
 
 
-            document.title = `(${onlineIds.length}) User Online`;
+            document.title = `(${validOnlineUsers.length}) User Online`;
 
             if (currentModalSerialKey && document.getElementById('userModal')) {
                 const currentUsers = grouped[currentModalSerialKey] || [];
