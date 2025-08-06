@@ -304,7 +304,6 @@
                 users.sort((a, b) => new Date(b.waktu) - new Date(a.waktu));
 
                 const colorClass = getSerialKeyColor(serialKey);
-                const activeUsers = users.filter(u => u.payload.status === 'active').length;
 
                 html += `
                         <div class="neo-card card-hover rounded-3xl overflow-hidden">
