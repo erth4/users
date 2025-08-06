@@ -212,6 +212,9 @@
 
         ws.onopen = () => {
             console.log('Terhubung ke server...');
+            ws.send(JSON.stringify({
+                event: "online"
+            }))
         };
 
         ws.onerror = (event) => {
