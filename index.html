@@ -283,13 +283,19 @@
         function renderData(onlineIds) {
             globalOnlineIds = onlineIds;
             const grouped = onlineIds.reduce((acc, item) => {
-                const key = item.serialkey;
-                if (!acc[key]) {
-                    acc[key] = [];
+                const isValidSerial = typeof item.serialkey === 'string' && item.serialkey.trim() !== '';
+                const isValidPayload = item.payload && typeof item.payload === 'object' && !Array.isArray(item.payload);
+
+                if (isValidSerial && isValidPayload) {
+                    const key = item.serialkey;
+                    if (!acc[key]) {
+                        acc[key] = [];
+                    }
+                    acc[key].push(item);
                 }
-                acc[key].push(item);
                 return acc;
             }, {});
+
 
             document.title = `(${onlineIds.length}) User Online`;
 
