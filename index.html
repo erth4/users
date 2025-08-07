@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-5">
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
         <div
             class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 floating-animation">
@@ -32,7 +32,21 @@
             style="animation-delay: 4s;"></div>
     </div>
 
-    <div class="relative z-10 w-full px-4 sm:px-6 lg:px-8">
+    <header
+        class="sticky top-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 backdrop-blur border-b border-gray-200 z-50 shadow-sm">
+        <div class="max-w-10xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="" class="text-xl font-bold text-gray-800" id="info-user-online">
+                User Online
+            </a>
+
+            <nav class="space-x-4">
+                <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa fa-heart text-red-600"></i> Ertha
+                    Ganteng</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-5">
         <div id="log" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
         </div>
     </div>
