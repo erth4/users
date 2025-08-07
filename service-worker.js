@@ -1,11 +1,9 @@
 const CACHE_NAME = 'user-online-pwa-v2';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/main.js',
-    '/favicon.ico',
-    '/icons/icon-192.png',
-    '/icons/icon-512.png'
+    '/users/',
+    '/users/index.html',
+    '/users/main.js',
+    '/users/favicon.ico'
 ];
 
 self.addEventListener('install', (event) => {
