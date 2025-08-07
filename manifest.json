@@ -1,7 +1,7 @@
 {
     "name": "User Online",
     "short_name": "User Online",
-    "theme_color": "#0f172a",
+    "theme_color": "#e0e7ff",
     "icons": [
         {
             "src": "./img/icons/android-chrome-192x192.png",
