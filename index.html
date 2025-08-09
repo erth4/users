@@ -36,21 +36,33 @@
     <header
         class="sticky top-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 backdrop-blur border-b border-gray-200 z-50 shadow-sm">
         <div class="max-w-10xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-            <a href="" class="text-xl font-bold text-gray-800" id="info-user-online">
+            <a href="" class="text-xl font-bold text-gray-800 truncate max-w-[150px] overflow-hidden whitespace-nowrap"
+                id="info-user-online">
                 User Online
             </a>
 
             <nav class="space-x-4">
-                <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa fa-heart text-red-600"></i> Ertha
-                    Ganteng</a>
+                <a href="javascript:;"
+                    class="text-gray-700 hover:text-blue-600 truncate max-w-[150px] overflow-hidden whitespace-nowrap inline-block align-middle">
+                    <i class="fa fa-heart text-red-600"></i> Ertha Ganteng
+                </a>
             </nav>
         </div>
+
     </header>
 
     <div class="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-5">
         <div id="log" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
         </div>
     </div>
+
+    <button type="button" onclick="showModalMonitoring()" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 
+           bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500
+           text-white p-3 md:p-4 rounded-full shadow-lg 
+           hover:shadow-2xl hover:scale-110 active:scale-95
+           transition-all duration-300 ease-out">
+        <span class="text-lg md:text-xl">📊</span>
+    </button>
 
     <script src="/users/main.js"></script>
     <script>
