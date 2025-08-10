@@ -2,6 +2,7 @@ const CACHE_NAME = 'user-online-pwa-v2';
 const urlsToCache = [
     '/users/',
     '/users/index.html',
+    '/users/main.css',
     '/users/main.js',
     '/users/favicon.ico'
 ];
