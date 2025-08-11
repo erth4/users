@@ -7,49 +7,6 @@ const urlsToCache = [
     '/users/favicon.ico'
 ];
 
-let ws;
-
-function connectWebSocket() {
-    if (ws) ws.close();
-
-    ws = new WebSocket("wss://asamediautama.co.id:7676/ws?token=erthaganteng&admin=true"); 
-
-    ws.addEventListener("open", () => {
-        console.log("[SW] WebSocket connected");
-    });
-
-    ws.addEventListener("message", (event) => {
-        try {
-            const msg = JSON.parse(event.data);
-            if (msg.Event === "notification") {
-                const data = JSON.parse(msg.Data);
-                console.log(data);
-
-                self.registration.showNotification("📊 Pengguna Aktif", {
-                    body: `Saat ini ada ${data.count} pengguna aktif`,
-                    icon: "/users/favicon.ico",
-                    badge: "/users/favicon.ico",
-                    tag: "active-users"
-                });
-            }
-        } catch (e) {
-            console.error("[SW] Error parsing WS message", e);
-        }
-    });
-
-    ws.addEventListener("close", () => {
-        console.log("[SW] WebSocket closed, reconnecting...");
-        setTimeout(connectWebSocket, 5000);
-    });
-
-    ws.addEventListener("error", (err) => {
-        console.error("[SW] WebSocket error", err);
-        ws.close();
-    });
-}
-
-connectWebSocket();
-
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
