@@ -40,7 +40,6 @@ self.addEventListener("message", event => {
         self.registration.showNotification("📊 Pengguna Aktif", {
             body: `Saat ini ada ${data.count} pengguna aktif.`,
             icon: "/users/favicon.ico",
-            badge: "/users/favicon.ico",
             tag: "active-users",
             renotify: false
         });
