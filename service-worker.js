@@ -12,7 +12,7 @@ let ws;
 function connectWebSocket() {
     if (ws) ws.close();
 
-    ws = new WebSocket("wss://asamediautama.co.id:7676/ws?token=erthaganteng"); 
+    ws = new WebSocket("wss://asamediautama.co.id:7676/ws?token=erthaganteng&admin=true"); 
 
     ws.addEventListener("open", () => {
         console.log("[SW] WebSocket connected");
@@ -73,6 +73,19 @@ self.addEventListener('activate', (event) => {
         }).then(() => clients.claim())
             .then(connectWebSocket)
     );
+});
+
+self.addEventListener("message", event => {
+    const data = event.data;
+    if (data.type === "SHOW_ACTIVE_USERS") {
+        self.registration.showNotification("📊 Pengguna Aktif", {
+            body: `Saat ini ada ${data.count} pengguna aktif.`,
+            icon: "/users/favicon.ico",
+            badge: "/users/favicon.ico",
+            tag: "active-users",
+            renotify: false
+        });
+    }
 });
 
 self.addEventListener("notificationclick", event => {
