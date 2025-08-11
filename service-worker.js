@@ -23,6 +23,7 @@ function connectWebSocket() {
             const msg = JSON.parse(event.data);
             if (msg.Event === "notification") {
                 const data = JSON.parse(msg.Data);
+                console.log(data);
 
                 self.registration.showNotification("📊 Pengguna Aktif", {
                     body: `Saat ini ada ${data.count} pengguna aktif`,
@@ -71,7 +72,6 @@ self.addEventListener('activate', (event) => {
                     .map(name => caches.delete(name))
             );
         }).then(() => clients.claim())
-            .then(connectWebSocket)
     );
 });
 
@@ -105,3 +105,5 @@ self.addEventListener("notificationclick", event => {
         })
     );
 });
+
+connectWebSocket();
