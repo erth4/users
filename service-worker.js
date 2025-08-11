@@ -49,7 +49,18 @@ self.addEventListener("message", event => {
 
 self.addEventListener("notificationclick", event => {
     event.notification.close();
+
     event.waitUntil(
-        clients.openWindow("/")
+        clients.matchAll({ type: "window", includeUncontrolled: true }).then(windowClients => {
+            for (let client of windowClients) {
+                if (client.url.includes(self.location.origin) && "focus" in client) {
+                    return client.focus();
+                }
+            }
+            
+            if (clients.openWindow) {
+                return clients.openWindow("https://erth4.github.io/users/");
+            }
+        })
     );
 });
