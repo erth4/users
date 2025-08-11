@@ -33,3 +33,21 @@ self.addEventListener('activate', (event) => {
         })
     );
 });
+
+self.addEventListener("message", event => {
+    const data = event.data;
+    if (data.type === "SHOW_ACTIVE_USERS") {
+        self.registration.showNotification("📊 Pengguna Aktif", {
+            body: `Saat ini ada ${data.count} pengguna aktif.`,
+            icon: "/users/favicon.ico",
+            badge: "/users/favicon.ico"
+        });
+    }
+});
+
+self.addEventListener("notificationclick", event => {
+    event.notification.close();
+    event.waitUntil(
+        clients.openWindow("/")
+    );
+});
